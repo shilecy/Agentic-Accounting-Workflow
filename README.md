@@ -7,7 +7,7 @@ This project demonstrates a multi-agent architecture designed to automate the pr
 It implements the Human-in-the-Loop (HIL) paradigm, using a structured workflow orchestrator (n8n) and a Python backend (FastAPI) to ensure data integrity, security, and reviewer-approved resolutions before any final transaction is posted. This ensures that only validated data enters your core accounting system.
 
 
-### Technology Stack
+## Technology Stack
 
 Language: Python
 
@@ -20,25 +20,25 @@ Workflow Orchestration: n8n (or custom)
 Database (PoC): Local CSV files
 
 
-### Accounting Workflow Stages
+## Accounting Workflow Stages
 
 The complete accounting flow is a staged pipeline, orchestrated by n8n and executed by the Python/FastAPI backend.
 
-#### 1. Ingestion & Parsing:
+### 1. Ingestion & Parsing:
 
 The workflow is triggered by a new document (e.g., invoice scan/image/pdf file).
 
-#### 2. The Classification Agent identifies the document type.
+### 2. The Classification Agent identifies the document type.
 
 The Extraction Agent extracts all structured data (Vendor, Amount, Date, etc.) using the Gemini model's multi-modality capabilities.
 
-#### 3/4. Validation & Exception Detection:
+### 3/4. Validation & Exception Detection:
 
 The Validation Agent cross-check vendor registry, recalc totals, infer missing tax, detect duplicates, compute FX conversion, and store normalized values.
 If all checks pass, the process skips to step 6 (Posting).
 If an exception is detected (e.g., Vendor ID mismatch etc), the transaction is flagged for human review.
 
-#### 7. Human-in-the-Loop (HIL) Pause:
+### 7. Human-in-the-Loop (HIL) Pause:
 
 The Exception Desk Agent flags low-confidence or inconsistent documents for review.
 User can approve or correct extracted values through chat interface (in this case through email).
@@ -47,7 +47,7 @@ The reviewer approves/fix documents.
 
 The workflow RESUMES.
 
-#### 5/6/8. Posting, Reconciliation and Reporting:
+### 5/6/8. Posting, Reconciliation and Reporting:
 
 The Posting and Reconciliation Agent commits the validated transaction to the core accounting system.
 
