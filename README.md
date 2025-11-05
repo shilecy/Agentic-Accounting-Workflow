@@ -90,12 +90,6 @@ uvicorn agents.main:app --reload
 
 The server will be available at http://127.0.0.1:8000.
 
-In terminal
-
-Invoke-WebRequest "http://127.0.0.1:8000/api/v1/trigger_workflow"
- -Method POST -Body "{}" -ContentType "application/json"
-
-check uvicorn terminal for the workflow
 
 Or simply run python -m agents.main
 
